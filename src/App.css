@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    direction: rtl;
+    overflow: hidden;
+    overscroll-behavior: none;
+    font-family: FredokkaMedium, sans-serif;
+    background-color: #222222;
+}
+
+@font-face {
+    font-family: FredokkaMedium;
+    src: url("./../media/fonts/Fredoka-Medium.ttf");
+}
+
+@font-face {
+    font-family: FredokkaBold;
+    src: url("./../media/fonts/Fredoka-Bold.ttf");
+}
+
+@font-face {
+    font-family: OHItaMaor;
+    src: url("./../media/fonts/OHItayMaor-Regular.ttf");
+}
+
+#root {
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.app {
+    position: relative;
+    width: min(100vw,
+            430px,
+            calc(100svh * 430 / 932));
+    aspect-ratio: 430 / 932;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-image: url("./../media/images/main-background.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    container-type: inline-size;
+}
+
+
+.till-logo {
+    position: absolute;
+    top: 1%;
+    left: 90%;
+    transform: translateX(-50%);
+    width: 15cqw;
+    height: auto;
+}
+
+.tohad-logo {
+    position: absolute;
+    top: 0.2%;
+    left: 25%;
+    transform: translateX(-50%);
+    width: 19cqw;
+    height: auto;
+}
+
+.mgl-logo {
+    position: absolute;
+    top: 0.2%;
+    left: 10%;
+    transform: translateX(-50%);
+    width: 16cqw;
+    height: auto;
+}
+
+::selection {
+    background-color: #94141C;
+    color: #ffffff;
+}
