@@ -1,0 +1,27 @@
+.navigation-arrows {
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4cqw;
+    z-index: 60;
+}
+
+.navigation-arrows button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-arrows img {
+    width: 13cqw;
+    height: auto;
+    display: block;
+}

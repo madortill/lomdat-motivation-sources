@@ -1,0 +1,329 @@
+.info-pages {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.info-car {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.info-title {
+    position: absolute;
+    top: 9%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90cqw;
+    font-size: 6cqw;
+    color: #94141C;
+    font-family: FredokkaBold, sans-serif;
+    text-align: center;
+    z-index: 2;
+}
+
+.info-subtitle {
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95cqw;
+    font-size: 3.2cqw;
+    color: #94141C;
+    font-family: FredokkaBold, sans-serif;
+    text-align: center;
+    z-index: 2;
+}
+
+/* המצבר */
+
+.battery-button {
+    position: absolute;
+    top: 75%;
+    left: 60%;
+    width: 18cqw;
+    height: 22cqw;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    isolation: isolate;
+}
+
+.battery-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 170%;
+    height: 160%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255, 230, 0, 1) 0%, rgba(255, 200, 0, 0.9) 30%, rgba(255, 200, 0, 0.4) 55%, transparent 75%);
+    filter: blur(3cqw);
+    z-index: -1;
+    animation: batteryHalo 1.2s ease-in-out infinite alternate;
+}
+
+.battery-button img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 2cqw #FFE600) drop-shadow(0 0 4cqw #FFD000) drop-shadow(0 0 6cqw #FFB800);
+    animation: batteryGlow 1.2s ease-in-out infinite alternate;
+}
+
+.battery-button.completed::before {
+    display: none;
+}
+
+.battery-button.completed img {
+    animation: none;
+    filter: none;
+}
+
+@keyframes batteryHalo {
+    0% {
+        opacity: 0.65;
+        transform: translate(-50%, -50%) scale(0.85);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.25);
+    }
+}
+
+@keyframes batteryGlow {
+    0% {
+        filter: drop-shadow(0 0 2cqw #FFE600) drop-shadow(0 0 4cqw #FFD000);
+    }
+    100% {
+        filter: drop-shadow(0 0 4cqw #FFE600) drop-shadow(0 0 7cqw #FFD000) drop-shadow(0 0 10cqw #FFB800);
+    }
+}
+
+/* רקע החלונית */
+
+.info-popup-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1cqw);
+    -webkit-backdrop-filter: blur(1cqw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 40;
+    animation: infoFadeIn 0.3s ease-out;
+}
+
+/* החלונית */
+
+.info-popup {
+    position: relative;
+    width: 86cqw;
+    height: 75%;
+    background-color: #FBE8CB;
+    border-radius: 5cqw;
+    padding: 5cqw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #94141C;
+    text-align: center;
+    overflow: hidden;
+    animation: infoPopupAppear 0.3s ease-out;
+}
+
+.info-popup-title {
+    font-family: FredokkaBold, sans-serif;
+    font-size: 6cqw;
+    color: #94141C;
+    margin-bottom: 5cqw;
+    flex-shrink: 0;
+}
+
+/* כפתור סגירה */
+
+.info-close-button {
+    position: absolute;
+    top: 3cqw;
+    right: 3cqw;
+    width: 8cqw;
+    height: 8cqw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #94141C;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 8cqw;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 5;
+}
+
+/* הגדרת מקור הסמכות */
+
+.authority-definition {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7cqw;
+    padding: 5cqw 2cqw;
+}
+
+.authority-definition p {
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 4.3cqw;
+    line-height: 1.35;
+    color: #94141C;
+}
+
+.authority-definition strong {
+    font-family: FredokkaBold, sans-serif;
+}
+
+/* אזור הטאבים */
+
+.authority-tabs-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 0;
+}
+
+.authority-tabs {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.authority-tab {
+    width: 50%;
+    height: 10cqw;
+    background-color: #DFC7A8;
+    color: #94141C;
+    border: none;
+    border-radius: 1.5cqw 1.5cqw 0 0;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 4.5cqw;
+    cursor: pointer;
+}
+
+.authority-tab.active {
+    background-color: #E5D2B6;
+    border: 0.3cqw solid #C8AE8C;
+    border-bottom: none;
+}
+
+/* תוכן הטאבים */
+
+.authority-tab-content {
+    width: 90%;
+    height: 100%;
+    background-color: #E5D2B6;
+    border: 0.3cqw solid #C8AE8C;
+    border-radius: 0 0 1cqw 1cqw;
+    padding: 8cqw 5cqw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.authority-tab-content::-webkit-scrollbar {
+    display: none;
+}
+
+.authority-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5cqw;
+}
+
+.authority-cards-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 4cqw;
+}
+
+.authority-card {
+    width: 100%;
+    min-height: 28cqw;
+    padding: 4cqw 2cqw;
+    background-color: #DFC7A8;
+    border-radius: 1cqw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2cqw;
+}
+
+.authority-card-wide {
+    min-height: 35cqw;
+}
+
+.authority-card img {
+    width: 8cqw;
+    height: 8cqw;
+    object-fit: contain;
+}
+
+.authority-card p {
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 4cqw;
+    line-height: 1.2;
+    color: #94141C;
+    text-align: center;
+}
+
+.authority-down-arrow {
+    font-size: 8cqw;
+    font-family: FredokkaMedium, sans-serif;
+    color: #94141C;
+    line-height: 1;
+}
+
+/* אנימציות */
+
+@keyframes infoFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes infoPopupAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

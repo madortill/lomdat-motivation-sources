@@ -58,6 +58,7 @@ body {
 
 
 .till-logo {
+    z-index: 50;
     position: absolute;
     top: 1%;
     left: 90%;
@@ -67,6 +68,7 @@ body {
 }
 
 .tohad-logo {
+    z-index: 50;
     position: absolute;
     top: 0.2%;
     left: 25%;
@@ -76,6 +78,7 @@ body {
 }
 
 .mgl-logo {
+    z-index: 50;
     position: absolute;
     top: 0.2%;
     left: 10%;
