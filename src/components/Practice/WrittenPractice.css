@@ -1,0 +1,198 @@
+.written-practice-page {
+    width: 100%;
+    height: 100%;
+}
+
+/* מסגרת נורת האזהרה */
+
+.written-warning-button {
+    position: absolute;
+    top: 49%;
+    left: 3%;
+    width: 17cqw;
+    height: auto;
+    aspect-ratio: 56 / 36;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 5;
+    transform-origin: center;
+    animation: writtenWarningPulse 1.2s ease-in-out infinite alternate;
+}
+
+.written-warning-button img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes writtenWarningPulse {
+    from {
+        transform: scale(0.85);
+    }
+    to {
+        transform: scale(1.15);
+    }
+}
+
+/* חלונית השאלה הפתוחה */
+
+.written-practice-board {
+    position: absolute;
+    top: 11%;
+    left: 7%;
+    width: 86%;
+    height: 78%;
+    padding: 5cqw 5cqw 4cqw;
+    box-sizing: border-box;
+    border-radius: 5cqw;
+    background: #FBE8CB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3cqw;
+    z-index: 5;
+}
+
+.written-practice-question {
+    width: 100%;
+    margin: 0;
+    color: #94141C;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 4cqw;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.written-practice-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.written-practice-textarea {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    padding: 4cqw;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 1cqw;
+    outline: none;
+    resize: none;
+    background: #BDA582;
+    color: #94141C;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: max(4cqw, 16px);
+    line-height: 1.45;
+    text-align: right;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.written-practice-textarea::placeholder {
+    color: rgba(148, 20, 28, 0.6);
+}
+
+.written-practice-textarea:focus {
+    outline: 0.5cqw solid #143B1F;
+    outline-offset: -0.5cqw;
+}
+
+.written-practice-error {
+    width: 100%;
+    margin: 0;
+    color: #94141C;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 3cqw;
+    text-align: center;
+}
+
+.written-practice-submit {
+    flex-shrink: 0;
+    width: 35cqw;
+    min-height: 8cqw;
+    padding: 0;
+    border: none;
+    border-radius: 1.5cqw;
+    background: #143B1F;
+    color: #FDB162;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 4cqw;
+    cursor: pointer;
+}
+
+/* מסך הסיום החדש */
+
+.written-complete-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8cqw;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1cqw);
+    -webkit-backdrop-filter: blur(1cqw);
+    z-index: 10;
+}
+
+.written-complete-popup {
+    position: relative;
+    width: 100%;
+    min-height: 70cqw;
+    padding: 10cqw 6cqw 5cqw;
+    box-sizing: border-box;
+    border-radius: 5cqw;
+    background: #FBE8CB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8cqw;
+    text-align: center;
+}
+
+.written-complete-popup h2 {
+    margin: 0;
+    color: #94141C;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 5.5cqw;
+    line-height: 1.2;
+}
+
+.written-complete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2cqw;
+    width: 32cqw;
+    min-height: 9cqw;
+    padding: 0;
+    border: none;
+    border-radius: 1.5cqw;
+    background: #143B1F;
+    color: #FDB162;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 4cqw;
+    cursor: pointer;
+}
+
+.written-complete-button span {
+    font-size: 5cqw;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .written-warning-button {
+        animation: none;
+    }
+}

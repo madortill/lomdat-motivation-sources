@@ -54,6 +54,7 @@
     cursor: pointer;
     z-index: 10;
     isolation: isolate;
+
 }
 
 .battery-button::before {
@@ -110,220 +111,290 @@
     }
 }
 
-/* רקע החלונית */
+/* גלגל ההגה */
 
-.info-popup-overlay {
+.spinning-wheel-button {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(1cqw);
-    -webkit-backdrop-filter: blur(1cqw);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 40;
-    animation: infoFadeIn 0.3s ease-out;
-}
-
-/* החלונית */
-
-.info-popup {
-    position: relative;
-    width: 86cqw;
-    height: 75%;
-    background-color: #FBE8CB;
-    border-radius: 5cqw;
-    padding: 5cqw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #94141C;
-    text-align: center;
-    overflow: hidden;
-    animation: infoPopupAppear 0.3s ease-out;
-}
-
-.info-popup-title {
-    font-family: FredokkaBold, sans-serif;
-    font-size: 6cqw;
-    color: #94141C;
-    margin-bottom: 5cqw;
-    flex-shrink: 0;
-}
-
-/* כפתור סגירה */
-
-.info-close-button {
-    position: absolute;
-    top: 3cqw;
-    right: 3cqw;
-    width: 8cqw;
-    height: 8cqw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 58%;
+    left: 20%;
+    width: 59cqw;
+    aspect-ratio: 241 / 130;
+    padding: 0;
     background: none;
     border: none;
-    color: #94141C;
-    font-family: FredokkaBold, sans-serif;
-    font-size: 8cqw;
-    line-height: 1;
     cursor: pointer;
-    z-index: 5;
+    z-index: 11;
+    isolation: isolate;
 }
 
-/* הגדרת מקור הסמכות */
-
-.authority-definition {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 7cqw;
-    padding: 5cqw 2cqw;
+.spinning-wheel-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 110%;
+    height: 95%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255, 235, 0, 1) 0%, rgba(255, 200, 0, 0.9) 35%, rgba(255, 180, 0, 0.45) 60%, transparent 80%);
+    filter: blur(4cqw);
+    z-index: -1;
+    animation: wheelHalo 1.1s ease-in-out infinite alternate;
 }
 
-.authority-definition p {
-    font-family: FredokkaMedium, sans-serif;
-    font-size: 4.3cqw;
-    line-height: 1.35;
-    color: #94141C;
-}
-
-.authority-definition strong {
-    font-family: FredokkaBold, sans-serif;
-}
-
-/* אזור הטאבים */
-
-.authority-tabs-section {
+.spinning-wheel-button img {
+    position: relative;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 0;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 4cqw #FFE600) drop-shadow(0 0 7cqw #FFC800);
+    animation: wheelGlow 1.1s ease-in-out infinite alternate;
 }
 
-.authority-tabs {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-.authority-tab {
-    width: 50%;
-    height: 10cqw;
-    background-color: #DFC7A8;
-    color: #94141C;
-    border: none;
-    border-radius: 1.5cqw 1.5cqw 0 0;
-    font-family: FredokkaBold, sans-serif;
-    font-size: 4.5cqw;
-    cursor: pointer;
-}
-
-.authority-tab.active {
-    background-color: #E5D2B6;
-    border: 0.3cqw solid #C8AE8C;
-    border-bottom: none;
-}
-
-/* תוכן הטאבים */
-
-.authority-tab-content {
-    width: 90%;
-    height: 100%;
-    background-color: #E5D2B6;
-    border: 0.3cqw solid #C8AE8C;
-    border-radius: 0 0 1cqw 1cqw;
-    padding: 8cqw 5cqw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-
-.authority-tab-content::-webkit-scrollbar {
+.spinning-wheel-button.completed::before {
     display: none;
 }
 
-.authority-cards {
+.spinning-wheel-button.completed img {
+    animation: none;
+    filter: none;
+}
+
+@keyframes wheelHalo {
+    0% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@keyframes wheelGlow {
+    0% {
+        opacity: 0.7;
+        filter: drop-shadow(0 0 3cqw #FFE600);
+    }
+    100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 6cqw #FFE600) drop-shadow(0 0 9cqw #FFC800);
+    }
+}
+
+/* פתח התדלוק */
+
+.fuel-button {
+    position: absolute;
+    top: 26.5%;
+    left: 5.5%;
+    width: 24cqw;
+    height: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 12;
+    isolation: isolate;
+}
+
+.fuel-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180%;
+    height: 180%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255, 230, 0, 1) 0%, rgba(255, 200, 0, 0.9) 32%, rgba(255, 200, 0, 0.4) 60%, transparent 78%);
+    filter: blur(3.2cqw);
+    z-index: -1;
+    animation: fuelHalo 1.15s ease-in-out infinite alternate;
+}
+
+.fuel-button img {
+    position: relative;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5cqw;
-}
-
-.authority-cards-row {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 4cqw;
-}
-
-.authority-card {
-    width: 100%;
-    min-height: 28cqw;
-    padding: 4cqw 2cqw;
-    background-color: #DFC7A8;
-    border-radius: 1cqw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2cqw;
-}
-
-.authority-card-wide {
-    min-height: 35cqw;
-}
-
-.authority-card img {
-    width: 8cqw;
-    height: 8cqw;
+    height: 100%;
     object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 2cqw #FFE600) drop-shadow(0 0 4cqw #FFD000) drop-shadow(0 0 7cqw #FFB800);
+    animation: fuelGlow 1.15s ease-in-out infinite alternate;
 }
 
-.authority-card p {
-    font-family: FredokkaMedium, sans-serif;
-    font-size: 4cqw;
-    line-height: 1.2;
-    color: #94141C;
-    text-align: center;
+.fuel-button.completed::before {
+    display: none;
 }
 
-.authority-down-arrow {
-    font-size: 8cqw;
-    font-family: FredokkaMedium, sans-serif;
-    color: #94141C;
-    line-height: 1;
+.fuel-button.completed img {
+    animation: none;
+    filter: none;
 }
 
-/* אנימציות */
+@keyframes fuelHalo {
+    0% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(0.82);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.24);
+    }
+}
 
-@keyframes infoFadeIn {
+@keyframes fuelGlow {
+    0% {
+        filter: drop-shadow(0 0 2cqw #FFE600) drop-shadow(0 0 4cqw #FFD000);
+    }
+    100% {
+        filter: drop-shadow(0 0 4cqw #FFE600) drop-shadow(0 0 7cqw #FFD000) drop-shadow(0 0 10cqw #FFB800);
+    }
+}
+
+/* גלגלי מקור הערכיות */
+
+.values-wheel-button {
+    position: absolute;
+    width: 18cqw;
+    height: 28cqw;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 20;
+    isolation: isolate;
+}
+
+.values-wheel-right {
+    top: 32%;
+    right: 4%;
+}
+
+.values-wheel-left {
+    top: 32%;
+    left: 4%;
+}
+
+.values-wheel-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 160%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255, 235, 0, 1) 0%, rgba(255, 210, 0, 0.95) 35%, rgba(255, 190, 0, 0.6) 60%, transparent 80%);
+    filter: blur(3cqw);
+    z-index: -1;
+    animation: valuesWheelHalo 1.1s ease-in-out infinite alternate;
+}
+
+.values-wheel-button img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 3cqw #FFE600) drop-shadow(0 0 6cqw #FFD000);
+    animation: valuesWheelGlow 1.1s ease-in-out infinite alternate;
+}
+
+.values-wheel-button.completed::before {
+    display: none;
+}
+
+.values-wheel-button.completed img {
+    animation: none;
+    filter: none;
+}
+
+@keyframes valuesWheelHalo {
+    0% {
+        opacity: 0.65;
+        transform: translate(-50%, -50%) scale(0.85);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.25);
+    }
+}
+
+@keyframes valuesWheelGlow {
+    0% {
+        filter: drop-shadow(0 0 2cqw #FFE600);
+    }
+    100% {
+        filter: drop-shadow(0 0 6cqw #FFE600) drop-shadow(0 0 10cqw #FFB800);
+    }
+}
+/* מנוע - מקור היחס האישי */
+
+.engine-button {
+    position: absolute;
+    top: 71%;
+    left: 32%;
+    width: 35cqw;
+    height: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 21;
+    isolation: isolate;
+}
+
+.engine-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160%;
+    height: 150%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255, 230, 0, 1) 0%, rgba(255, 200, 0, 0.85) 35%, transparent 75%);
+    filter: blur(4cqw);
+    z-index: -1;
+    animation: engineHalo 1.2s ease-in-out infinite alternate;
+}
+
+.engine-button img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 3cqw #FFE600) drop-shadow(0 0 6cqw #FFD000);
+    animation: engineGlow 1.2s ease-in-out infinite alternate;
+}
+
+.engine-button.completed::before {
+    display: none;
+}
+
+.engine-button.completed img {
+    animation: none;
+    filter: none;
+}
+
+@keyframes engineHalo {
     from {
-        opacity: 0;
+        opacity: 0.65;
+        transform: translate(-50%, -50%) scale(0.85);
     }
     to {
         opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
     }
 }
 
-@keyframes infoPopupAppear {
+@keyframes engineGlow {
     from {
-        opacity: 0;
-        transform: scale(0.95);
+        filter: drop-shadow(0 0 2cqw #FFE600);
     }
     to {
-        opacity: 1;
-        transform: scale(1);
+        filter: drop-shadow(0 0 6cqw #FFE600) drop-shadow(0 0 9cqw #FFB800);
     }
 }

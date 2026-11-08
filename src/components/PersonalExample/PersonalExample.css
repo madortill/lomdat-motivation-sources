@@ -1,0 +1,114 @@
+.personal-example-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4cqw;
+    padding-top: 4cqw;
+    min-height: 0;
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.personal-example-content::-webkit-scrollbar {
+    display: none;
+}
+
+.personal-example-definition {
+    width: 90%;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 4.7cqw;
+    line-height: 1.4;
+    color: #94141C;
+    text-align: center;
+}
+
+.personal-bubbles {
+    position: relative;
+    width: 100%;
+    height: 95cqw;
+    flex-shrink: 0;
+}
+
+.personal-bubble {
+    position: absolute;
+    width: 36cqw;
+    height: 36cqw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.personal-bubble img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.personal-bubble span {
+    position: relative;
+    z-index: 1;
+    width: 80%;
+    padding-bottom: 3cqw;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 4.1cqw;
+    line-height: 1.25;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.personal-bubble-1 {
+    top: 0;
+    left: 0;
+}
+
+.personal-bubble-2 {
+    top: 15cqw;
+    right: 0;
+}
+
+.personal-bubble-3 {
+    top: 37cqw;
+    left: 0;
+}
+
+.personal-bubble-4 {
+    top: 51cqw;
+    right: 0;
+}
+
+.personal-cards-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+    gap: 14cqw;
+    min-height: 0;
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.personal-cards-content::-webkit-scrollbar {
+    display: none;
+}
+
+.personal-cards-instruction {
+    width: 100%;
+    color: #94141C;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 3.5cqw;
+    text-align: center;
+}
+
+.personal-cards-list {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 5cqw;
+    flex-shrink: 0;
+}

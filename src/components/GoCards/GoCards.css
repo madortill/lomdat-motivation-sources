@@ -1,0 +1,76 @@
+.go-card {
+    position: relative;
+    width: 100%;
+    height: 14cqw;
+    background-color: #DEC7A7;
+    border: none;
+    border-radius: 1.5cqw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94141C;
+    font-family: FredokkaMedium, sans-serif;
+    cursor: pointer;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.go-card-icon {
+    position: absolute;
+    right: 3cqw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10cqw;
+    height: 10cqw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.6s ease-in-out;
+}
+
+.go-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.6s ease-in-out;
+}
+
+.go-card-preview {
+    position: absolute;
+    right: 15cqw;
+    left: 3cqw;
+    font-size: 3.8cqw;
+    line-height: 1.2;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.go-card-revealed-text {
+    position: absolute;
+    right: 3cqw;
+    left: 15cqw;
+    font-size: 3.7cqw;
+    line-height: 1.2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.go-card-revealed .go-card-icon {
+    right: calc(100% - 13cqw);
+}
+
+.go-card-revealed .go-card-icon img {
+    transform: rotate(-180deg);
+}
+
+.go-card-revealed .go-card-preview {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.go-card-revealed .go-card-revealed-text {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.3s;
+}

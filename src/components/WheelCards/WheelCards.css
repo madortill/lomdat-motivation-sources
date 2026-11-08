@@ -1,0 +1,123 @@
+.wheel-cards {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3cqw;
+}
+
+.wheel-cards-display {
+    position: relative;
+    width: 100%;
+    height: 43cqw;
+    overflow: hidden;
+}
+
+.wheel-card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 74%;
+    height: 100%;
+    padding: 5cqw;
+    border: none;
+    border-radius: 1.5cqw;
+    background-color: #DEC7A7;
+    color: #94141C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.25;
+    transform: translateX(calc(-50% + var(--card-offset) * 90%)) scale(0.92);
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.75s ease;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.wheel-card-active {
+    opacity: 1;
+    transform: translateX(calc(-50% + var(--card-offset) * 90%)) scale(1);
+    cursor: default;
+}
+
+.wheel-card-inactive {
+    opacity: 0.25;
+}
+
+.wheel-card p {
+    margin: 0;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 4.3cqw;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.wheel-card-controls {
+    width: 74%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wheel-control {
+    width: 9cqw;
+    height: 9cqw;
+    padding: 0;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.wheel-control img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.wheel-control:active:not(:disabled) {
+    transform: scale(0.9);
+}
+
+.wheel-control:disabled {
+    opacity: 0.2;
+    cursor: default;
+}
+
+.wheel-card-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5cqw;
+}
+
+.wheel-card-dot {
+    width: 2.5cqw;
+    height: 2.5cqw;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background-color: #D8C2A2;
+    cursor: pointer;
+    transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+.wheel-card-dot.active {
+    width: 7cqw;
+    border-radius: 2cqw;
+    background-color: #C5AC8C;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wheel-card,
+    .wheel-card-dot,
+    .wheel-control {
+        transition-duration: 0.01ms;
+    }
+}
