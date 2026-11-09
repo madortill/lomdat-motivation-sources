@@ -67,7 +67,7 @@ function InfoPages({
       </h1>
 
       <h2 className="info-subtitle">
-        - לחצו על החלקים הזוהרים כדי ללמוד, תוכלו לחזור עליהם בלחיצה -
+        - לחצו על החלקים הזוהרים כדי ללמוד, תוכלו לחזור אליהם בלחיצה -
       </h2>
 
       {!showPopup && (
@@ -107,7 +107,7 @@ function InfoPages({
           )}
 
           {/* מקור הערכיות – גלגלי המכונית */}
-          {professionalismCompleted && (
+          {professionalismCompleted && infoStep === 0 &&(
             <>
               <button
                 type="button"

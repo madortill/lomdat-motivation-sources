@@ -12,36 +12,14 @@ const exercises = {
     title: "מקור הסמכות",
     light: batteryLight,
     statements: [
-      {
-        id: 1,
-        text: "יוצר תחושת מרירות",
-        answer: "disadvantages"
-      },
-      {
-        id: 2,
-        text: "ברורה וקלה להבנה",
-        answer: "advantages"
-      },
-      {
-        id: 3,
-        text: "סמכות מוקנית אוטומטית מתוקף הדרגה",
-        answer: "advantages"
-      },
-      {
-        id: 4,
-        text: "מפחית את האפשרות להפנמה ולמשמעת עצמית של החייל",
-        answer: "disadvantages"
-      },
-      {
-        id: 5,
-        text: "דורש פיקוח ישיר/עקיף",
-        answer: "disadvantages"
-      },
-      {
-        id: 6,
-        text: "חיסכון בזמן בטווח הקצר",
-        answer: "advantages"
-      }
+      { id: 1, text: "יוצר תחושת מרירות", answer: "disadvantages" },
+      { id: 2, text: "ברורה וקלה להבנה", answer: "advantages" },
+      { id: 3, text: "סמכות מוקנית אוטומטית מתוקף הדרגה", answer: "advantages" },
+      { id: 4, text: "מפחית את האפשרות להפנמה ולמשמעת עצמית של החייל", answer: "disadvantages" },
+      { id: 5, text: "דורש פיקוח ישיר/עקיף", answer: "disadvantages" },
+      { id: 6, text: "חיסכון בזמן בטווח הקצר", answer: "advantages" },
+      { id: 7, text: "לוקח זמן לרכוש מיומנות זו", answer: "neither" },
+      { id: 8, text: "משרה על החייל תחושה של ביטחון ואמון", answer: "neither" }
     ]
   },
 
@@ -93,7 +71,7 @@ function Practice({
   const config = exercises[exercise];
   const statements = config.statements;
 
-  const storagePrefix = `lomda-practice-${exercise}`;
+  const storagePrefix = `lomda-practice-${exercise}-v2`;
 
   const [placements, setPlacements] = usePersistentState(
     `${storagePrefix}-placements`,
@@ -122,6 +100,7 @@ function Practice({
   const pointerRef = useRef(null);
   const advantagesRef = useRef(null);
   const disadvantagesRef = useRef(null);
+  const neitherRef = useRef(null);
 
   const remaining = statements.filter(
     (item) => !placements[item.id]
@@ -145,6 +124,10 @@ function Practice({
 
   const placedDisadvantages = statements.filter(
     (item) => placements[item.id] === "disadvantages"
+  );
+
+  const placedNeither = statements.filter(
+    (item) => placements[item.id] === "neither"
   );
 
   const allPlaced = remaining.length === 0;
@@ -205,6 +188,10 @@ function Practice({
       {
         category: "disadvantages",
         element: disadvantagesRef.current
+      },
+      {
+        category: "neither",
+        element: neitherRef.current
       }
     ];
 
@@ -357,7 +344,7 @@ function Practice({
       onSolvedChange(false);
 
       setMessage(
-        "יש לשבץ את כל ששת ההיגדים לפני הבדיקה."
+        `יש לשבץ את כל ${statements.length} ההיגדים לפני ההגשה.`
       );
 
       return;
@@ -373,7 +360,7 @@ function Practice({
       onSolvedChange(true);
     } else {
       setMessage(
-        "יש תשובות שגויות. גררו אותן לאזור המתאים ולחצו שוב על בדיקה."
+        "יש תשובות שגויות. גררו אותן לאזור המתאים והגישו שוב."
       );
 
       onSolvedChange(false);
@@ -488,90 +475,46 @@ function Practice({
               התאימו בין ההיגדים למקומות המתאימים להם
             </p>
 
-            <div className="practice-drop-section">
-              <h2>יתרונות</h2>
-
-              <div
-                ref={advantagesRef}
-                className={`practice-drop-zone ${
-                  selectedId !== null ||
-                  draggedCategory === "advantages"
-                    ? "ready"
-                    : ""
-                }`}
-                onClick={() =>
-                  handleZoneClick("advantages")
-                }
-                role="button"
-                tabIndex={0}
-                onKeyDown={(event) => {
-                  if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                  ) {
-                    event.preventDefault();
-                    handleZoneClick("advantages");
-                  }
-                }}
-                aria-label="אזור היתרונות"
-              >
-                {placedAdvantages.map(
-                  renderPlacedCard
-                )}
+            {[
+              { id: "advantages", label: "יתרונות", ref: advantagesRef, cards: placedAdvantages },
+              { id: "disadvantages", label: "חסרונות", ref: disadvantagesRef, cards: placedDisadvantages },
+              { id: "neither", label: "לא יתרון ולא חיסרון", ref: neitherRef, cards: placedNeither }
+            ].map((zone) => (
+              <div className="practice-drop-section" key={zone.id}>
+                <h2>{zone.label}</h2>
+                <div
+                  ref={zone.ref}
+                  className={`practice-drop-zone practice-zone-${zone.id} ${
+                    selectedId !== null || draggedCategory === zone.id ? "ready" : ""
+                  }`}
+                  onClick={() => handleZoneClick(zone.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      handleZoneClick(zone.id);
+                    }
+                  }}
+                  aria-label={`אזור ${zone.label}`}
+                >
+                  {zone.cards.map(renderPlacedCard)}
+                </div>
               </div>
-            </div>
+            ))}
 
-            <div className="practice-drop-section">
-              <h2>חסרונות</h2>
-
-              <div
-                ref={disadvantagesRef}
-                className={`practice-drop-zone ${
-                  selectedId !== null ||
-                  draggedCategory === "disadvantages"
-                    ? "ready"
-                    : ""
-                }`}
-                onClick={() =>
-                  handleZoneClick("disadvantages")
-                }
-                role="button"
-                tabIndex={0}
-                onKeyDown={(event) => {
-                  if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                  ) {
-                    event.preventDefault();
-                    handleZoneClick("disadvantages");
-                  }
-                }}
-                aria-label="אזור החסרונות"
-              >
-                {placedDisadvantages.map(
-                  renderPlacedCard
-                )}
-              </div>
-            </div>
-
-            <button
-              type="button"
-              className="practice-check-button"
-              onClick={checkAnswers}
-            >
-              בדיקה
-            </button>
-
-            <p
-              className={`practice-feedback ${
-                canContinue
-                  ? "success"
-                  : ""
-              }`}
-              role="status"
-            >
+            <p className={`practice-feedback ${canContinue ? "success" : ""}`} role="status">
               {message}
             </p>
+            {canContinue ? (
+              <button type="button" className="practice-check-button" onClick={onContinue}>
+                המשך
+              </button>
+            ) : (
+              <button type="button" className="practice-check-button" onClick={checkAnswers}>
+                הגשה
+              </button>
+            )}
           </section>
 
           <section
@@ -687,15 +630,6 @@ function Practice({
             </div>
           )}
 
-          {canContinue && (
-            <button
-              type="button"
-              className="practice-continue-button"
-              onClick={onContinue}
-            >
-              המשך
-            </button>
-          )}
         </>
       )}
 

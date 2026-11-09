@@ -10,7 +10,7 @@ import heatLight from "../../../media/images/Practice/heat-light.svg";
 
 const exercises = {
   oil: {
-    title: "אילו יתרונות יש לשימוש ביחסי אנוש כמקור כוח? סמנו את כל התשובות הנכונות.",
+    title: "אילו יתרונות יש לשימוש  במקור הערכיות כמקור כוח? סמנו את כל התשובות הנכונות.",
     light: oilLight,
     statements: [
       {
@@ -35,7 +35,7 @@ const exercises = {
       },
       {
         id: 5,
-        text: "ניתנת לרכישה באמצעות למידה וניסיון",
+        text: "פועל על מכנה משותף וקווי דמיון בין המפקד לחייליו",
         correct: true
       },
       {

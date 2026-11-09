@@ -10,13 +10,6 @@ function InfoPopup({ title, onClose, children }) {
         aria-modal="true"
         aria-label={title}
       >
-        <button
-          className="info-close-button"
-          onClick={onClose}
-          aria-label="סגירת החלונית"
-        >
-          ×
-        </button>
 
         <h2 className="info-popup-title">{title}</h2>
 

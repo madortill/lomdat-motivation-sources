@@ -91,3 +91,162 @@ body {
     background-color: #94141C;
     color: #ffffff;
 }
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.practice-back-navigation {
+    position: absolute;
+    bottom: 3%;
+    right: 5%;
+    width: 12cqw;
+    height: 12cqw;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #143B1F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.practice-back-navigation img {
+    display: block;
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.practice-back-navigation:active {
+    transform: scale(0.95);
+}
+
+.practice-completed-lights {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 8;
+}
+
+.practice-completed-lights .practice-warning-button {
+    pointer-events: auto;
+}
+
+.practice-completed-lights .practice-warning-button.completed {
+    animation: none;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.practice-completed-lights .practice-warning-button.completed img {
+    animation: none;
+    transform: none;
+}
+
+/* מצבר */
+.practice-completed-lights .practice-warning-battery {
+    width: 7cqw;
+    top: 46%;
+    filter: brightness(0.6);
+}
+
+/* שמן */
+.practice-completed-lights .practice-warning-oil {
+        width: 8cqw;
+    top: 46%;
+    left: 67%;
+    filter: brightness(0.6);
+}
+
+/* חום מנוע */
+.practice-completed-lights .practice-warning-heat {
+       width: 7cqw;
+    top: 48%;
+    filter: brightness(0.6);
+}
+
+/* מסך טעינה מותאם לטלפון */
+.app-loading {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5cqw;
+    background-color: #94141C;
+    color: #ffb44b;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 5cqw;
+    direction: rtl;
+    text-align: center;
+    z-index: 2000;
+}
+
+/* טקסט הטעינה */
+.app-loading p {
+    margin: 0;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 5cqw;
+}
+
+/* עיגול הטעינה */
+.app-loading-spinner {
+    width: 14cqw;
+    height: 14cqw;
+    border: 1.2cqw solid rgba(148, 20, 28, 0.2);
+    border-top-color: #ffb44b;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: loading-spin 0.8s linear infinite;
+}
+
+/* אנימציית סיבוב */
+@keyframes loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-loading-spinner {
+        animation: none;
+    }
+}
+
+/* רקע מטושטש שממלא שטחים מחוץ ללומדה */
+body {
+    position: relative;
+    background-color: #DAC4A5;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -5%;
+    background-image: url("../media/images/main-background.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(5cqw) brightness(0.8);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* הלומדה נשארת מעל הרקע */
+#root {
+    position: relative;
+    z-index: 1;
+}

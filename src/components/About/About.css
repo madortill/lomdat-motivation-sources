@@ -1,0 +1,106 @@
+/* כפתור אודות */
+.lomda-about {
+    position: absolute;
+    top: 1%;
+    left: 67%;
+    width: 12cqw;
+    z-index: 1000;
+}
+
+/* תמונת האודות */
+.lomda-about-trigger {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: block;
+    cursor: pointer;
+}
+
+.lomda-about-trigger img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    -webkit-user-drag: none;
+}
+
+/* חלונית האודות */
+.lomda-about-popup {
+    position: absolute;
+    top: 110%;
+    left: -450%;
+    width: 65cqw;
+    min-height: 95cqw;
+    padding: 6cqw 4cqw;
+    box-sizing: border-box;
+    border-radius: 4cqw;
+    background: #FBE8CB;
+    border: 0.5cqw solid #94141C;
+    box-shadow: 0 2cqw 5cqw rgba(0, 0, 0, 0.2);
+    color: #94141C;
+    direction: rtl;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3cqw;
+    animation: lomdaAboutOpen 0.25s ease-out;
+    z-index: 1001;
+}
+
+/* כפתור סגירה */
+.lomda-about-close {
+    position: absolute;
+    top: 1cqw;
+    right: 2cqw;
+    width: 7cqw;
+    height: 7cqw;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #94141C;
+    font-family: Arial, sans-serif;
+    font-size: 7cqw;
+    cursor: pointer;
+}
+
+/* כותרת */
+.lomda-about-popup h2 {
+    margin: 0;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 6cqw;
+}
+
+/* כותרות משנה */
+.lomda-about-popup h3 {
+    margin: 0;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 4.5cqw;
+}
+
+/* טקסט */
+.lomda-about-popup p {
+    margin: -3%;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 4cqw;
+}
+
+/* איור */
+.lomda-about-character {
+    width: 35cqw;
+    height: 35cqw;
+    object-fit: contain;
+}
+
+/* אנימציית פתיחה */
+@keyframes lomdaAboutOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-2cqw) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

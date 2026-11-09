@@ -58,7 +58,7 @@
     width: 74%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .wheel-control {
@@ -120,4 +120,27 @@
     .wheel-control {
         transition-duration: 0.01ms;
     }
+}
+/* תמיכה בהחלקה אופקית בטלפון */
+.wheel-cards-display {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* החלקה עם האצבע וגרירה עם העכבר */
+.wheel-cards-display {
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: grab;
+}
+
+.wheel-cards-display:active {
+    cursor: grabbing;
+}
+
+.wheel-card {
+    -webkit-user-drag: none;
+    user-select: none;
 }

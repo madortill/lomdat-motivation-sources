@@ -1,13 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PersonalExample.css";
 
 import GoCards from "../GoCards/GoCards.jsx";
 import bubbleIcon from "../../../media/images/infoPages/bubble-icon.svg";
 import spinningWheelIcon from "../../../media/images/infoPages/spinning-wheel-icon.svg";
 
+const ADVANTAGES_STORAGE_KEY = "lomda-personal-example-visited-advantages";
+const DISADVANTAGES_STORAGE_KEY = "lomda-personal-example-visited-disadvantages";
+
+function readVisitedCards(storageKey) {
+  try {
+    const stored = JSON.parse(
+      localStorage.getItem(storageKey) || "[]"
+    );
+
+    return Array.isArray(stored) ? stored : [];
+  } catch {
+    return [];
+  }
+}
+
 function PersonalExample({ infoStep }) {
   const showAdvantages = infoStep === 5;
   const showDisadvantages = infoStep === 6;
+
+  const [visitedAdvantages, setVisitedAdvantages] = useState(() =>
+    readVisitedCards(ADVANTAGES_STORAGE_KEY)
+  );
+
+  const [visitedDisadvantages, setVisitedDisadvantages] = useState(() =>
+    readVisitedCards(DISADVANTAGES_STORAGE_KEY)
+  );
 
   const personalExamples = [
     "חתירה למצוינות",
@@ -42,6 +65,44 @@ function PersonalExample({ infoStep }) {
     }
   ];
 
+  const handleAdvantageReveal = (index) => {
+    setVisitedAdvantages((prev) => {
+      if (prev.includes(index)) return prev;
+
+      const updated = [...prev, index];
+
+      localStorage.setItem(
+        ADVANTAGES_STORAGE_KEY,
+        JSON.stringify(updated)
+      );
+
+      return updated;
+    });
+  };
+
+  const handleDisadvantageReveal = (index) => {
+    setVisitedDisadvantages((prev) => {
+      if (prev.includes(index)) return prev;
+
+      const updated = [...prev, index];
+
+      localStorage.setItem(
+        DISADVANTAGES_STORAGE_KEY,
+        JSON.stringify(updated)
+      );
+
+      return updated;
+    });
+  };
+
+  const allAdvantagesVisited = advantages.every(
+    (_, index) => visitedAdvantages.includes(index)
+  );
+
+  const allDisadvantagesVisited = disadvantages.every(
+    (_, index) => visitedDisadvantages.includes(index)
+  );
+
   return (
     <>
       {infoStep === 4 && (
@@ -71,19 +132,42 @@ function PersonalExample({ infoStep }) {
           <h3 className="personal-cards-instruction">
             {showAdvantages
               ? "- לחצו על ההיגדים בשביל ללמוד על היתרונות -"
-              : "חסרונות"}
+              : "- לחצו על ההיגדים בשביל ללמוד על החסרונות -"}
           </h3>
 
           <div className="personal-cards-list">
-            {(showAdvantages ? advantages : disadvantages).map((item, index) => (
-              <GoCards
-                key={`${infoStep}-${index}`}
-                icon={spinningWheelIcon}
-                previewTitle={item.previewTitle}
-                revealedTitle={item.revealedTitle}
-              />
-            ))}
+            {(showAdvantages ? advantages : disadvantages).map(
+              (item, index) => (
+                <GoCards
+                  key={`${infoStep}-${index}`}
+                  icon={spinningWheelIcon}
+                  previewTitle={item.previewTitle}
+                  revealedTitle={item.revealedTitle}
+                  onReveal={() =>
+                    showAdvantages
+                      ? handleAdvantageReveal(index)
+                      : handleDisadvantageReveal(index)
+                  }
+                />
+              )
+            )}
           </div>
+
+          {showAdvantages && (
+            <p className="personal-cards-progress">
+              {allAdvantagesVisited
+                ? "כל היתרונות נפתחו! אפשר להמשיך."
+                : `נפתחו ${visitedAdvantages.length} מתוך 3 יתרונות`}
+            </p>
+          )}
+
+          {showDisadvantages && (
+            <p className="personal-cards-progress">
+              {allDisadvantagesVisited
+                ? "כל החסרונות נפתחו! אפשר להמשיך."
+                : `נפתחו ${visitedDisadvantages.length} מתוך 2 חסרונות`}
+            </p>
+          )}
         </div>
       )}
     </>

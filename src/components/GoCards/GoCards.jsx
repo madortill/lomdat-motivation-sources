@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import "./GoCards.css";
 
-function GoCards({ icon, previewTitle, revealedTitle }) {
+function GoCards({
+  icon,
+  previewTitle,
+  revealedTitle,
+  onReveal
+}) {
   const [isRevealed, setIsRevealed] = useState(false);
 
   const handleClick = () => {
     if (!isRevealed) {
-      setIsRevealed(true);
+      onReveal?.();
     }
+
+    setIsRevealed((prev) => !prev);
   };
 
   return (
@@ -22,8 +29,13 @@ function GoCards({ icon, previewTitle, revealedTitle }) {
         <img src={icon} alt="" />
       </div>
 
-      <span className="go-card-preview">{previewTitle}</span>
-      <span className="go-card-revealed-text">{revealedTitle}</span>
+      <span className="go-card-preview">
+        {previewTitle}
+      </span>
+
+      <span className="go-card-revealed-text">
+        {revealedTitle}
+      </span>
     </button>
   );
 }

@@ -112,3 +112,14 @@
     gap: 5cqw;
     flex-shrink: 0;
 }
+
+.personal-cards-progress {
+    width: 100%;
+    margin: 0;
+    color: #94141C;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 3.4cqw;
+    text-align: center;
+    flex-shrink: 0;
+    opacity: 0;
+}

@@ -1,169 +1,249 @@
 .written-practice-page {
+    position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    direction: rtl;
+    color: #94141C;
+    font-family: FredokkaMedium, sans-serif;
 }
 
-/* מסגרת נורת האזהרה */
-
-.written-warning-button {
+.written-practice-background {
     position: absolute;
-    top: 49%;
-    left: 3%;
-    width: 17cqw;
-    height: auto;
-    aspect-ratio: 56 / 36;
-    padding: 0;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    z-index: 5;
-    transform-origin: center;
-    animation: writtenWarningPulse 1.2s ease-in-out infinite alternate;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
 }
 
-.written-warning-button img {
+/* =========================
+   כותרת מסך הפתיחה
+========================= */
+
+.written-practice-heading {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    width: 90%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 3;
+}
+
+.written-practice-heading h1 {
+    margin: 0;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 6cqw;
+    color: #94141C;
+}
+
+.written-practice-heading p {
+    margin: 1cqw 0 0;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 3.6cqw;
+    color: #94141C;
+}
+
+/* =========================
+   כפתור המשולש - מיקום נכון + זוהר
+========================= */
+
+.written-practice-triangle-button {
+    position: absolute;
+    top: 60.9%;
+    left: -1%;
+    width: 13.5cqw;
+    height: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 6;
+    isolation: isolate;
+}
+
+.written-practice-triangle-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180%;
+    height: 180%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse,
+        rgba(255, 0, 0, 0.6) 0%,
+        rgba(255, 0, 0, 0.35) 32%,
+        rgba(255, 0, 0, 0.12) 58%,
+        transparent 78%
+    );
+    filter: blur(2.8cqw);
+    z-index: -1;
+    animation: triangleGlowHalo 1.15s ease-in-out infinite alternate;
+}
+
+.written-practice-triangle-button img {
+    position: relative;
     display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;
+    filter: drop-shadow(0 0 1cqw #ff0000) drop-shadow(0 0 2cqw #ff0000) drop-shadow(0 0 5cqw #FFB800);
+    animation: triangleGlowLight 1.15s ease-in-out infinite alternate;
+    opacity: 0;
 }
 
-@keyframes writtenWarningPulse {
-    from {
-        transform: scale(0.85);
+@keyframes triangleGlowHalo {
+    0% {
+        opacity: 0.65;
+        transform: translate(-50%, -50%) scale(0.88);
     }
-    to {
-        transform: scale(1.15);
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.18);
     }
 }
 
-/* חלונית השאלה הפתוחה */
+@keyframes triangleGlowLight {
+    0% {
+        filter: drop-shadow(0 0 1cqw #ff0000) drop-shadow(0 0 3cqw #ff0000);
+    }
+    100% {
+        filter: drop-shadow(0 0 2cqw #ff0000) drop-shadow(0 0 4cqw #ff0000) drop-shadow(0 0 1cqw #FFB800);
+    }
+}
+
+/* =========================
+   לוח התרגול
+========================= */
 
 .written-practice-board {
     position: absolute;
     top: 11%;
     left: 7%;
     width: 86%;
-    height: 78%;
-    padding: 5cqw 5cqw 4cqw;
-    box-sizing: border-box;
-    border-radius: 5cqw;
+    min-height: 71%;
+    padding: 4.5cqw 5cqw 4cqw;
     background: #FBE8CB;
+    border-radius: 5cqw;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3cqw;
-    z-index: 5;
+    box-sizing: border-box;
+    z-index: 4;
 }
 
-.written-practice-question {
-    width: 100%;
+.written-practice-board h1 {
     margin: 0;
-    color: #94141C;
     font-family: FredokkaBold, sans-serif;
-    font-size: 4cqw;
-    line-height: 1.25;
+    font-size: 5.2cqw;
+    color: #94141C;
     text-align: center;
 }
 
-.written-practice-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+.written-practice-text {
+    margin: 0;
+    width: 100%;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 3.95cqw;
+    line-height: 1.35;
+    color: #94141C;
+    text-align: center;
+}
+
+.written-practice-question {
+    font-family: FredokkaBold, sans-serif;
+}
+
+.written-practice-answer-box {
+    width: 100%;
+    margin-top: 1cqw;
+    background: #C7AD8D;
+    border-radius: 1.5cqw;
+    padding: 2cqw;
+    box-sizing: border-box;
 }
 
 .written-practice-textarea {
     width: 100%;
-    flex: 1;
-    min-height: 0;
-    padding: 4cqw;
-    box-sizing: border-box;
-    border: none;
-    border-radius: 1cqw;
-    outline: none;
+    min-height: 32cqw;
     resize: none;
-    background: #BDA582;
-    color: #94141C;
-    font-family: FredokkaMedium, sans-serif;
-    font-size: max(4cqw, 16px);
-    line-height: 1.45;
-    text-align: right;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.written-practice-textarea::placeholder {
-    color: rgba(148, 20, 28, 0.6);
-}
-
-.written-practice-textarea:focus {
-    outline: 0.5cqw solid #143B1F;
-    outline-offset: -0.5cqw;
-}
-
-.written-practice-error {
-    width: 100%;
-    margin: 0;
-    color: #94141C;
-    font-family: FredokkaMedium, sans-serif;
-    font-size: 3cqw;
-    text-align: center;
-}
-
-.written-practice-submit {
-    flex-shrink: 0;
-    width: 35cqw;
-    min-height: 8cqw;
-    padding: 0;
     border: none;
-    border-radius: 1.5cqw;
+    outline: none;
+    background: transparent;
+    color: #94141C;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 3.7cqw;
+    line-height: 1.35;
+    text-align: right;
+}
+
+.written-practice-submit-button {
+    width: 24cqw;
+    height: 8cqw;
+    margin-top: 1cqw;
+    border: none;
+    border-radius: 2cqw;
     background: #143B1F;
     color: #FDB162;
     font-family: FredokkaBold, sans-serif;
-    font-size: 4cqw;
+    font-size: 3.6cqw;
     cursor: pointer;
 }
 
-/* מסך הסיום החדש */
+.written-practice-submit-button:active {
+    transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .written-practice-triangle-button::before,
+    .written-practice-triangle-button img {
+        animation: none;
+    }
+}
+.written-practice-textarea::placeholder {
+    color: #636363;
+    opacity: 0.6;
+    font-family: FredokkaMedium, sans-serif;
+    font-size: 4cqw;
+    text-align: right;
+}
+
+/* מסך סיום התרגול */
 
 .written-complete-overlay {
     position: absolute;
     inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8cqw;
-    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(1cqw);
     -webkit-backdrop-filter: blur(1cqw);
-    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
 
 .written-complete-popup {
-    position: relative;
-    width: 100%;
-    min-height: 70cqw;
-    padding: 10cqw 6cqw 5cqw;
+    width: 80%;
+    height: 36%;
+    padding: 7cqw 5cqw 4cqw;
     box-sizing: border-box;
-    border-radius: 5cqw;
     background: #FBE8CB;
+    border-radius: 5cqw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 8cqw;
+    justify-content: space-between;
     text-align: center;
 }
 
 .written-complete-popup h2 {
-    margin: 0;
+    margin: auto 0;
     color: #94141C;
     font-family: FredokkaBold, sans-serif;
     font-size: 5.5cqw;
@@ -171,28 +251,30 @@
 }
 
 .written-complete-button {
+    width: 32cqw;
+    height: 9cqw;
+    padding: 0;
+    background: #143B1F;
+    border: none;
+    border-radius: 1.5cqw;
+    color: #FDB162;
+    font-family: FredokkaBold, sans-serif;
+    font-size: 4cqw;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2cqw;
-    width: 32cqw;
-    min-height: 9cqw;
-    padding: 0;
-    border: none;
-    border-radius: 1.5cqw;
-    background: #143B1F;
-    color: #FDB162;
-    font-family: FredokkaBold, sans-serif;
-    font-size: 4cqw;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
-.written-complete-button span {
-    font-size: 5cqw;
+.written-complete-button img {
+    width: 7cqw;
+    height: auto;
+    display: block;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .written-warning-button {
-        animation: none;
-    }
+.written-complete-button {
+    direction: ltr;
+    flex-direction: row;
 }

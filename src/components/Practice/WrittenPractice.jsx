@@ -1,141 +1,125 @@
 import React, { useState } from "react";
-import "./Practice.css";
 import "./WrittenPractice.css";
 
 import usePersistentState from "../../hooks/usePersistentState.js";
 
 import practiceBackground from "../../../media/images/Practice/practice-background.svg";
 import triangleLight from "../../../media/images/Practice/triangle-light.svg";
+import buttonArrow from "../../../media/images/button-arrow.svg";
 
-function WrittenPractice({ phase, onStart, onSubmit, onContinue }) {
+function WrittenPractice({
+  phase = "intro",
+  onStart,
+  onSubmit,
+  onContinue
+}) {
   const [answer, setAnswer] = usePersistentState(
     "lomda-practice-written-answer",
     ""
   );
 
-  const [submitted, setSubmitted] = usePersistentState(
-    "lomda-practice-written-submitted",
-    false
-  );
-
   const [error, setError] = useState("");
 
-  const handleAnswerChange = (event) => {
-    setAnswer(event.target.value);
-    setError("");
+  const isIntro = phase === "intro";
+  const isWriting = phase === "write";
+  const isComplete = phase === "complete";
 
-    if (submitted) {
-      setSubmitted(false);
-    }
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
+  const handleSubmit = () => {
     if (!answer.trim()) {
       setError("יש לכתוב תשובה לפני ההגשה.");
       return;
     }
 
-    setSubmitted(true);
     setError("");
-    onSubmit();
+    onSubmit?.();
   };
 
   return (
-    <div className="practice-page written-practice-page">
+    <div className="written-practice-page">
       <img
-        className="practice-background"
+        className="written-practice-background"
         src={practiceBackground}
         alt=""
       />
 
-      {phase === "intro" && (
+      {isIntro && (
         <>
-          <div className="practice-intro-heading">
-            <h1>התרגול</h1>
+          <div className="written-practice-heading">
+            <h1>תרגול</h1>
             <p>- לחצו על נורת האזהרה -</p>
           </div>
 
           <button
             type="button"
-            className="written-warning-button"
+            className="written-practice-triangle-button"
             onClick={onStart}
-            aria-label="פתיחת התרגול האחרון"
+            aria-label="פתיחת התרגול"
           >
-            <img
-              src={triangleLight}
-              alt="מסגרת נורת האזהרה"
-            />
+            <img src={triangleLight} alt="" />
           </button>
         </>
       )}
 
-      {phase === "write" && (
-        <form
-          className="written-practice-board"
-          onSubmit={handleSubmit}
-        >
-          <h1 className="written-practice-question">
-            אתם מפקדים בטירונות כלל־צה״לית. במהלך שבוע
-            המטווחים, אחד החיילים מספר לכם שהוא חושש מאוד
-            מנשק ומבקש שלא להשתתף במטווח, למרות שעבר את
-            ההכנות הנדרשות.
-            <br />
-            מצד אחד, עליכם לוודא שהחייל עומד בדרישות ההכשרה.
-            מצד שני, חשוב לכם שירגיש בטוח ויצליח להתמודד
-            עם החשש.
-            <br />
-            <br />
-            באילו מקורות כוח והנעה תשתמשו כדי להתמודד עם
-            המצב? הסבירו כיצד תשלבו ביניהם ומדוע.
-          </h1>
+      {isWriting && (
+        <div className="written-practice-board">
+          <h1>תרגול</h1>
 
-          <label
-            className="written-practice-label"
-            htmlFor="written-practice-answer"
-          >
-            התשובה שלכם
-          </label>
+          <p className="written-practice-text">
+            אתם מפקדים בטירונות כל״צ. במהלך הטירונות, אחד החיילים מסרב להיכנס לתורנות מטבח בטענה שהתורנות אינה חלק מתפקידו ושהוא אינו מוכן לבצע אותה.
+          </p>
 
-          <textarea
-            id="written-practice-answer"
-            className="written-practice-textarea"
-            value={answer}
-            onChange={handleAnswerChange}
-            placeholder="כתבו כאן את התשובה שלכם..."
-            rows={8}
-            dir="rtl"
-            autoComplete="off"
-            aria-describedby={error ? "written-practice-error" : undefined}
-          />
+          <p className="written-practice-text">
+            מצד אחד, עליכם לוודא שהחייל ממלא את חובותיו ועומד בדרישות המסגרת. מצד שני, חשוב לכם להבין את הסיבה לסירוב ולמצוא דרך להניע אותו לשתף פעולה.
+          </p>
+
+          <p className="written-practice-text written-practice-question">
+            באילו מקורות כוח והנעה תשתמשו כדי
+            להתמודד עם המקרה? הסבירו כיצד תשלבו
+            ביניהם ומדוע.
+          </p>
+
+          <div className="written-practice-answer-box">
+            <textarea
+              className="written-practice-textarea"
+              value={answer}
+              onChange={(event) => {
+                setAnswer(event.target.value);
+                setError("");
+              }}
+              placeholder="כתבו את תשובתכם כאן..."
+              dir="rtl"
+              aria-label="כתיבת התשובה לתרגול"
+              style={{ fontSize: "max(3.7cqw, 16px)" }}
+            />
+          </div>
 
           {error && (
-            <p
-              id="written-practice-error"
-              className="written-practice-error"
-              role="alert"
-            >
+            <p className="written-practice-error">
               {error}
             </p>
           )}
 
           <button
-            type="submit"
-            className="written-practice-submit"
+            type="button"
+            className="written-practice-submit-button"
+            onClick={handleSubmit}
           >
             הגשה
           </button>
-        </form>
+        </div>
       )}
 
-      {phase === "complete" && (
+      {isComplete && (
         <div className="written-complete-overlay">
-          <section className="written-complete-popup">
+          <div className="written-complete-popup">
             <h2>
-              אלופים! סיימתם את התרגול
+              אלופים! סיימתם את
               <br />
-              התקדמו לחלק הבא בלומדה
+              התרגול
+              <br />
+              התקדמו לחלק הבא
+              <br />
+              בלומדה
             </h2>
 
             <button
@@ -143,10 +127,10 @@ function WrittenPractice({ phase, onStart, onSubmit, onContinue }) {
               className="written-complete-button"
               onClick={onContinue}
             >
-              <span aria-hidden="true">←</span>
-              המשך
+              <img src={buttonArrow} alt="" />
+              <span>המשך</span>
             </button>
-          </section>
+          </div>
         </div>
       )}
     </div>
