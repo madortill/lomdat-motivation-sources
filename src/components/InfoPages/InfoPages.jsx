@@ -32,6 +32,7 @@ function InfoPages({
   personalExampleCompleted,
   professionalismCompleted,
   valuesSourceCompleted,
+  onOpenValuesDisadvantages,
   relationshipSourceCompleted
 }) {
   const showPopup = infoStep > 0;
@@ -169,6 +170,7 @@ function InfoPages({
 
           {isValuesSource && (
             <ValuesSource
+            onOpenDisadvantages={onOpenValuesDisadvantages}
               infoStep={infoStep}
               onCardVisit={onValuesCardVisit}
               visitedCards={visitedValuesCards}

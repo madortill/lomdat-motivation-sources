@@ -112,3 +112,19 @@
     font-size: 3.1cqw;
     text-align: center;
 }
+
+/* אזור החסרונות הופך ללחיץ לאחר צפייה בכל היתרונות */
+.values-group-muted.values-group-clickable {
+    opacity: 0.1;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* מאפשר לחיצה על כל האזור, גם מעל הכרטיסייה */
+.values-group-clickable .wheel-cards {
+    pointer-events: none;
+}
+
+.values-group-clickable:active {
+    opacity: 1;
+}

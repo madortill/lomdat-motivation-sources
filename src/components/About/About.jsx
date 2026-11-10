@@ -62,7 +62,7 @@ function About() {
           >
             ×
           </button>
-
+      
           <h2 id="lomda-about-title">אודות </h2>
 
           <img
@@ -75,7 +75,7 @@ function About() {
           <h3>פיתוח וגרפיקה</h3>
           <p>טוראי גל גבעון</p>
 
-          <h3>מומחות תוכן</h3>
+          <h3>מומחי תוכן</h3>
           <p>סרן רוני שגב</p>
           <p>סגן שירה סולונג בן שושן  </p>
 
@@ -83,6 +83,7 @@ function About() {
           <p>נובמבר 2026</p>
 
           <p>סיווג: בלמ״ס</p>
+          <p className="lomda-about-department">מדור טי״ל קריית ההדרכה</p>
         </div>
       )}
     </div>

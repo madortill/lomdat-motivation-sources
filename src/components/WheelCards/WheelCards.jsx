@@ -52,11 +52,11 @@ function WheelCards({
     ) {
       preventClick.current = true;
 
-      if (deltaX < 0) {
-        goToCard(activeIndex + 1);
-      } else {
-        goToCard(activeIndex - 1);
-      }
+      if (deltaX > 0) {
+  goToCard(activeIndex + 1);
+} else {
+  goToCard(activeIndex - 1);
+}
     }
   };
 

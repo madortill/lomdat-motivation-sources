@@ -11,6 +11,7 @@ import backArrow from "../media/images/back-arrow.svg";
 import batteryLight from "../media/images/Practice/battery-light.svg";
 import oilLight from "../media/images/Practice/oil-light.svg";
 import heatLight from "../media/images/Practice/heat-light.svg";
+import hachshamLogo from "../media/images/logos/hachsham-logo.png";
 
 import About from "./components/About/About.jsx";
 import FirstPage from "./components/FirstPage/FirstPage.jsx";
@@ -728,6 +729,19 @@ function App() {
     );
   }
 
+  const openValuesDisadvantages = () => {
+  if (infoStep !== 14) return;
+
+  const allVisited = [0, 1, 2].every((index) =>
+    visitedValuesCards.advantages.includes(index)
+  );
+
+  if (!allVisited) return;
+
+  onValuesCardVisit("disadvantages", 0);
+  setInfoStep(15);
+};
+
   // ====================================
   // הצגת הלומדה
   // ====================================
@@ -785,6 +799,11 @@ function App() {
         alt="till-logo"
       />
 
+<img
+        className="hachsham-logo"
+        src={hachshamLogo}
+        alt="hachsham-logo"
+      />
       <img
         className="tohad-logo"
         src={tohadLogo}
@@ -823,6 +842,7 @@ function App() {
       {pages[currentPage] === "info" && (
         <InfoPages
           infoStep={infoStep}
+          onOpenValuesDisadvantages={openValuesDisadvantages}
           openBattery={openBattery}
           openSpinningWheel={openSpinningWheel}
           openFuel={openFuel}

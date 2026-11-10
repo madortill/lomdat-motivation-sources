@@ -17,12 +17,17 @@ function ValuesSource({
   infoStep,
   onCardVisit,
   visitedCards,
-  valuesCardIndexes
+  valuesCardIndexes,
+  onOpenDisadvantages
 }) {
   const isDefinition = infoStep === 13;
   const isAdvantages = infoStep === 14;
   const isDisadvantages = infoStep === 15;
-
+  const canOpenDisadvantages =
+    isAdvantages &&
+    [0, 1, 2].every((index) =>
+      visitedCards.advantages.includes(index)
+    );
   return (
     <div className="values-source">
       {isDefinition && (
@@ -59,7 +64,28 @@ function ValuesSource({
             />
           </div>
 
-          <div className={`values-card-group ${isAdvantages ? "values-group-muted" : ""}`}>
+          <div
+            className={`values-card-group ${isAdvantages ? "values-group-muted" : ""
+              } ${canOpenDisadvantages ? "values-group-clickable" : ""
+              }`}
+            onClick={canOpenDisadvantages ? onOpenDisadvantages : undefined}
+            onKeyDown={(event) => {
+              if (
+                canOpenDisadvantages &&
+                (event.key === "Enter" || event.key === " ")
+              ) {
+                event.preventDefault();
+                onOpenDisadvantages?.();
+              }
+            }}
+            role={canOpenDisadvantages ? "button" : undefined}
+            tabIndex={canOpenDisadvantages ? 0 : undefined}
+            aria-label={
+              canOpenDisadvantages
+                ? "לחצו למעבר לחסרונות"
+                : undefined
+            }
+          >
             <h3 className="values-cards-title">חסרונות</h3>
 
             <WheelCards

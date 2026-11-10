@@ -48,9 +48,9 @@ function Authority({ infoStep, changeInfoTab }) {
       {!showTabs ? (
         <div className="authority-definition">
           <p>
-            מקור הסמכות נובע מכך שצה״ל הוא
+           מקור הסמכות נובע מהיותו של צה״ל
             <strong> מערכת היררכית</strong>,
-            המניחה כי למפקד יש זכות חוקית להשפיע על פקודיו.
+           שבה למפקד מוקנית סמכות חוקית להשפיע על פקודיו
           </p>
 
           <p>
@@ -60,7 +60,7 @@ function Authority({ infoStep, changeInfoTab }) {
           </p>
 
           <p>
-            במידה ויזלזל/ לא יבצע את המשימה
+            במידה ויזלזל / לא יבצע את המשימה
             כראוי יקבל מענה בהתאם.
           </p>
 

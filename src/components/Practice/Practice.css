@@ -70,6 +70,14 @@
     left: 62%;
 }
 
+/* זוהר צהוב לנורת השמן בלבד */
+.practice-warning-oil img {
+    filter:
+        drop-shadow(0 0 2cqw #FFB12B)
+        drop-shadow(0 0 4cqw #FFB12B)
+        drop-shadow(0 0 6cqw #FFB12B);
+}
+
 .practice-warning-heat {
     top: 46%;
     left: 18%;

@@ -478,7 +478,7 @@ function Practice({
             {[
               { id: "advantages", label: "יתרונות", ref: advantagesRef, cards: placedAdvantages },
               { id: "disadvantages", label: "חסרונות", ref: disadvantagesRef, cards: placedDisadvantages },
-              { id: "neither", label: "לא יתרון ולא חיסרון", ref: neitherRef, cards: placedNeither }
+              { id: "neither", label: "לא שייך למקור זה", ref: neitherRef, cards: placedNeither }
             ].map((zone) => (
               <div className="practice-drop-section" key={zone.id}>
                 <h2>{zone.label}</h2>

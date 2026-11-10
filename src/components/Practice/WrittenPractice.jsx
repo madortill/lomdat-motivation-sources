@@ -4,8 +4,8 @@ import "./WrittenPractice.css";
 import usePersistentState from "../../hooks/usePersistentState.js";
 
 import practiceBackground from "../../../media/images/Practice/practice-background.svg";
-import triangleLight from "../../../media/images/Practice/triangle-light.svg";
 import buttonArrow from "../../../media/images/button-arrow.svg";
+import triangleButton from "../../../media/images/triangle-button.png";
 
 function WrittenPractice({
   phase = "intro",
@@ -55,7 +55,7 @@ function WrittenPractice({
             onClick={onStart}
             aria-label="פתיחת התרגול"
           >
-            <img src={triangleLight} alt="" />
+            <img src={triangleButton} alt="" />
           </button>
         </>
       )}

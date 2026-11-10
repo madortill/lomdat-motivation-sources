@@ -1,8 +1,8 @@
 /* כפתור אודות */
 .lomda-about {
     position: absolute;
-    top: 1%;
-    left: 67%;
+    bottom: 1%;
+    left: 87%;
     width: 12cqw;
     z-index: 1000;
 }
@@ -28,7 +28,7 @@
 /* חלונית האודות */
 .lomda-about-popup {
     position: absolute;
-    top: 110%;
+    top: -960%;
     left: -450%;
     width: 65cqw;
     min-height: 95cqw;
@@ -91,6 +91,10 @@
     width: 35cqw;
     height: 35cqw;
     object-fit: contain;
+}
+
+.lomda-about-popup .lomda-about-department {
+    margin-top: 2cqw;
 }
 
 /* אנימציית פתיחה */

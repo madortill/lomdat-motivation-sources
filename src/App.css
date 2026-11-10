@@ -61,7 +61,7 @@ body {
     z-index: 50;
     position: absolute;
     top: 1%;
-    left: 90%;
+    left: 10%;
     transform: translateX(-50%);
     width: 15cqw;
     height: auto;
@@ -71,17 +71,27 @@ body {
     z-index: 50;
     position: absolute;
     top: 0.2%;
-    left: 25%;
+    left: 27%;
     transform: translateX(-50%);
     width: 19cqw;
     height: auto;
 }
 
+
+.hachsham-logo {
+    z-index: 50;
+    position: absolute;
+    top: 0.5%;
+    left: 79%;
+    transform: translateX(-50%);
+    width: 20.5cqw;
+    height: auto;
+}
 .mgl-logo {
     z-index: 50;
     position: absolute;
-    top: 0.2%;
-    left: 10%;
+    top: -0%;
+    left: 93%;
     transform: translateX(-50%);
     width: 16cqw;
     height: auto;

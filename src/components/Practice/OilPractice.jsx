@@ -7,6 +7,7 @@ import usePersistentState from "../../hooks/usePersistentState.js";
 import practiceBackground from "../../../media/images/Practice/practice-background.svg";
 import oilLight from "../../../media/images/Practice/oil-light.svg";
 import heatLight from "../../../media/images/Practice/heat-light.svg";
+import triangleButton from "../../../media/images/triangle-button.png";
 
 const exercises = {
   oil: {
@@ -30,7 +31,7 @@ const exercises = {
       },
       {
         id: 4,
-        text: "סמכות מוקנית אוטומטית מתוקף הדרגה",
+        text: " משרה על החיילים תחושת ביטחון ואמון",
         correct: false
       },
       {
