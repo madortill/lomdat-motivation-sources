@@ -28,7 +28,7 @@
 /* חלונית האודות */
 .lomda-about-popup {
     position: absolute;
-    top: -960%;
+    top: -1150%;
     left: -450%;
     width: 65cqw;
     min-height: 95cqw;
@@ -75,6 +75,7 @@
 /* כותרות משנה */
 .lomda-about-popup h3 {
     margin: 0;
+    margin-top: 3cqw;
     font-family: FredokkaBold, sans-serif;
     font-size: 4.5cqw;
 }
